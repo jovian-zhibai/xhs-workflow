@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080, initial-scale=1.0">
+  <title>小红书封面 - 大字报</title>
+</head>
+<body style="margin: 0; padding: 0; width: 1080px; height: 1440px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; position: relative; overflow: hidden;">
+  
+  <!-- 背景装饰 -->
+  <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+  <div style="position: absolute; bottom: -150px; left: -150px; width: 500px; height: 500px; border-radius: 50%; background: rgba(255,255,255,0.08);"></div>
+  
+  <!-- 分类标签 -->
+  <div style="position: absolute; top: 100px; left: 80px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 16px 32px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3);">
+    <span style="font-size: 28px; color: #FFF; letter-spacing: 3px; font-weight: 500;">{{CATEGORY}}</span>
+  </div>
+  
+  <!-- 主标题区域 -->
+  <div style="width: 920px; text-align: center; padding: 0 80px; position: relative; z-index: 1;">
+    <h1 style="margin: 0; padding: 0; font-size: 96px; font-weight: 900; color: #FFF; line-height: 1.2; letter-spacing: 4px; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+      {{TITLE}}
+    </h1>
+  </div>
+  
+  <!-- 副标题 -->
+  <div style="width: 920px; text-align: center; padding: 40px 80px 0; position: relative; z-index: 1;">
+    <p style="margin: 0; padding: 0; font-size: 40px; color: rgba(255,255,255,0.9); line-height: 1.5; font-weight: 300;">
+      {{SUBTITLE}}
+    </p>
+  </div>
+  
+  <!-- 底部装饰条 -->
+  <div style="position: absolute; bottom: 120px; left: 50%; transform: translateX(-50%); width: 200px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 3px;"></div>
+  
+  <!-- 底部标识 -->
+  <div style="position: absolute; bottom: 60px; right: 80px;">
+    <span style="font-size: 24px; color: rgba(255,255,255,0.5); letter-spacing: 1px;">小红书</span>
+  </div>
+  
+</body>
+</html>

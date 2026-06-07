@@ -1,0 +1,19 @@
+{
+  "author": "你的小红书昵称",
+  "obsidian_vault_path": "/Users/souljian/code/opc/opc-knowledge",
+  "obsidian素材库_folder": "12-小红书",
+  "default_style": "种草",
+  "wechatsync_platforms": ["xiaohongshu", "douyin"],
+  "proxy": {
+    "http": "",
+    "https": ""
+  },
+  "topic_sources": {
+    "lifestyle": ["小红书热搜", "微博热搜", "抖音热榜"],
+    "beauty": ["小红书美妆", "YouTube美妆", "Instagram"],
+    "food": ["下厨房", "小红书美食", "大众点评"],
+    "travel": ["马蜂窝", "小红书旅行", "携程"]
+  },
+  "agnes_api_key": "",
+  "output_dir": "output"
+}

@@ -1,0 +1,30 @@
+# 配置文件（包含敏感信息）
+config/xhs.json
+
+# 信源连通性缓存（每个人网络环境不同）
+config/connectivity.json
+
+# 输出目录中的笔记（按需保留）
+output/*.html
+output/*.md
+output/*.json
+
+# Claude Code 本地配置
+.claude/
+
+# CodeGraph 索引
+.codegraph/
+
+# 打包输出
+*.skill
+
+# OS 文件
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
