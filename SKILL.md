@@ -1,24 +1,16 @@
 ---
 name: xhs-workflow
-preamble-tier: 4
-version: 1.0.0
 description: |
   小红书图文笔记全流程工作流 — 从爆款拆解到内容创作再到发布。
   覆盖爆款拆解、选题策划、文章撰写、标签生成、封面设计、同步发布全链路。
   支持全自动（无人值守）和半自动（交互式）两种模式。
-  Use when: "小红书", "写笔记", "种草", "好物分享", "攻略", "测评", "合集",
-  "帮我写篇小红书", "最近没什么灵感", "爆款笔记", "同步到小红书".
+  Use when: "小红书", "写笔记", "种草", "好物分享", "攻略", "测评", "合集", "干货",
+  "帮我写篇小红书", "最近没什么灵感", "爆款笔记", "同步到小红书",
+  "帮我写小红书", "小红书笔记", "想做小红书博主", "小红书标题", "笔记数据不好",
+  "帮我拆解爆款", "小红书怎么写", "帮我种草", "小红书攻略", "笔记怎么写才能火",
+  "帮我看看笔记", "优化笔记", "小红书选题", "帮我推荐标签", "小红书封面".
   Proactively suggest when the user mentions writing notes, content creation,
-  or Xiaohongshu related tasks.
-triggers:
-  - 小红书
-  - 写笔记
-  - 种草
-  - 好物分享
-  - 攻略
-  - 测评
-  - 合集
-  - 干货
+  Xiaohongshu, 小红书, 种草, 好物分享, or any social media content creation tasks.
 allowed-tools:
   - Bash
   - Read

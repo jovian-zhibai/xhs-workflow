@@ -1,0 +1,22 @@
+[
+  {"query": "帮我写一篇小红书笔记，关于夏季护肤的", "should_trigger": true},
+  {"query": "最近没什么灵感，想写小红书但不知道写什么", "should_trigger": true},
+  {"query": "帮我拆解一下小红书上的爆款笔记，看看他们是怎么写的", "should_trigger": true},
+  {"query": "帮我种草一些好用的护肤品，写成小红书格式", "should_trigger": true},
+  {"query": "我想写一篇通勤穿搭的攻略，发到小红书上", "should_trigger": true},
+  {"query": "帮我想几个小红书标题，现在这个太普通了", "should_trigger": true},
+  {"query": "这篇笔记数据不好，帮我看看哪里可以改进", "should_trigger": true},
+  {"query": "帮我把这篇文章同步到小红书草稿箱", "should_trigger": true},
+  {"query": "小红书笔记怎么写才能火？帮我写一篇", "should_trigger": true},
+  {"query": "我想做小红书博主，帮我从选题开始规划内容", "should_trigger": true},
+  {"query": "帮我写一篇公众号文章", "should_trigger": false},
+  {"query": "这个Python脚本报错了，帮我debug一下", "should_trigger": false},
+  {"query": "帮我翻译这段英文", "should_trigger": false},
+  {"query": "帮我写一个React组件", "should_trigger": false},
+  {"query": "帮我查一下这个API的文档", "should_trigger": false},
+  {"query": "帮我优化一下这段代码的性能", "should_trigger": false},
+  {"query": "帮我写一个SQL查询", "should_trigger": false},
+  {"query": "帮我配置一下Nginx", "should_trigger": false},
+  {"query": "帮我写单元测试", "should_trigger": false},
+  {"query": "帮我分析一下这个数据集", "should_trigger": false}
+]
