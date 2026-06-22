@@ -129,6 +129,75 @@ API Key：
 | 代理访问 | ⚠️ 需配置 | proxy |
 ```
 
+### AI 自动验证逻辑
+
+用户说"帮我配置"或"检查配置"时，AI 必须执行以下自动检测并输出实时状态报告：
+
+**检测步骤：**
+
+1. **配置文件检测**：
+   ```bash
+   # 检查 config/xhs.json 是否存在
+   test -f config/xhs.json && echo "✅ 配置文件存在" || echo "❌ 配置文件不存在，需要创建"
+   ```
+
+2. **anysearch 检测**：
+   ```bash
+   # 检查 anysearch skill 是否安装
+   if [ -d "$HOME/.agents/skills/anysearch" ] || [ -d "./.agents/skills/anysearch" ]; then
+     echo "✅ anysearch 已安装"
+   else
+     echo "⚠️ anysearch 未安装（推荐）: npx skills add pinkpromise/anysearch"
+   fi
+   ```
+
+3. **Wechatsync 检测**：
+   ```bash
+   # 检查 Wechatsync CLI 是否安装
+   if command -v wechatsync &>/dev/null; then
+     echo "✅ Wechatsync CLI 已安装"
+   else
+     echo "⚠️ Wechatsync CLI 未安装: npm install -g @wechatsync/cli"
+   fi
+   ```
+
+4. **Obsidian Vault 路径检测**：
+   从 `config/xhs.json` 读取 `obsidian_vault_path`：
+   - 如果为空 → ⚠️ 未设置
+   - 如果有值但路径不存在 → ❌ 路径无效
+   - 如果有值且路径存在 → ✅ 可用
+
+5. **依赖检查脚本**（如果存在）：
+   ```bash
+   bash scripts/xhs-check-deps.sh
+   ```
+
+**输出格式 — 实时配置状态报告：**
+
+```
+📋 配置状态报告
+
+┌─────────────────────────────────────────────────┐
+│ 功能              状态      说明                  │
+├─────────────────────────────────────────────────┤
+│ ✅ 写笔记/打磨     开箱即用  无需任何配置            │
+│ ✅ 爆款拆解        已就绪    anysearch 已安装        │
+│ ✅ 同步发布(手动)   已就绪    pbcopy 可用             │
+│ ❌ 同步发布(自动)   未安装    npx install -g @wechatsync/cli │
+│ ⚠️ 素材库          未配置    obsidian_vault_path 为空  │
+│ ⚠️ AI 封面图       未配置    agnes_api_key 为空       │
+└─────────────────────────────────────────────────┘
+
+下一步建议：
+1. 如需命令行同步：npm install -g @wechatsync/cli
+2. 如需 Obsidian 素材库：设置 obsidian_vault_path
+```
+
+**配置状态标记规则：**
+- ✅ 已就绪：功能可用，配置完整
+- ⚠️ 可选未配置：功能可选但未配置，不影响核心使用
+- ❌ 不可用：必要依赖缺失，功能无法使用
+
 ## 配置文件示例
 
 ```json
