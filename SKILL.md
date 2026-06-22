@@ -197,7 +197,7 @@ allowed-tools:
 
 **DraftPush 集成（可选）：**
 
-如果 `config/xhs.json` 中 `draftpush.enabled` 为 `true`，在输出到 `output/` 的同时，额外复制一份到 Obsidian 待同步目录，供 DraftPush 插件自动检测和发布：
+如果 `config/xhs.json` 中 `draftpush.enabled` 为 `true`，在输出到 `output/` 的同时，额外复制一份到待同步目录，供 [DraftPush](https://github.com/jovian-zhibai/draftpush) Chrome 扩展自动检测和发布：
 
 ```
 {vault}/{draftpush.sync_dir}/{日期-标题简称}/

@@ -52,10 +52,10 @@
   - 创建目录结构和模板文件
 - 用户说"否"：跳过
 
-**DraftPush 集成（Obsidian 用户可选）：**
+**DraftPush 集成（可选）：**
 
-如果用户已启用 Obsidian 集成，询问是否安装了 DraftPush 插件：
-- 「你是否安装了草稿推送 DraftPush 插件？」
+询问用户是否安装了 DraftPush Chrome 扩展：
+- 「你是否安装了草稿推送 DraftPush Chrome 扩展？」
 - 用户说"是"：设置 `draftpush.enabled = true`，`sync_dir` 默认 `"12-小红书/待同步"`
 - 用户说"否"或不确定：`draftpush.enabled = false`，不做额外操作
 

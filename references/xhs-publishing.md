@@ -221,7 +221,7 @@ pbcopy < output/xxx.md
 
 ## DraftPush 集成（可选）
 
-如果用户安装了 Obsidian 的 [DraftPush](https://obsidian.md/plugins) 插件，xhs-workflow 可以在输出到 `素材库/` 的同时，额外复制一份到待同步目录，触发 DraftPush 自动发布。
+如果用户安装了 Chrome 扩展 [DraftPush](https://github.com/jovian-zhibai/draftpush)，xhs-workflow 可以在输出到 `素材库/` 的同时，额外复制一份到待同步目录，触发 DraftPush 自动发布。
 
 ### 启用方式
 
@@ -264,7 +264,7 @@ cover: 笔记-cover.html
 
 1. 打开 Obsidian
 2. 进入「12-小红书/待同步/」目录
-3. DraftPush 插件自动检测到待发布内容
+3. DraftPush 扩展自动检测到待发布内容
 4. 一键推送到小红书
 
 ---
