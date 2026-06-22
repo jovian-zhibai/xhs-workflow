@@ -68,6 +68,7 @@ The config file contains secrets and is gitignored. Key fields:
 - `wechatsync_token` — Wechatsync API token (optional)
 - `topic_sources` — user-configured topic sources by category
 - `agnes_api_key` — Agnes AI API key for cover image generation (optional)
+- `draftpush` — DraftPush plugin integration (optional): `enabled` (bool) + `sync_dir` (path)
 - `proxy` — proxy config object with `http` and `https` fields
 
 ## Dependencies

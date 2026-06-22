@@ -219,6 +219,56 @@ pbcopy < output/xxx.md
 3. 分步骤正文结构用户喜欢
 ```
 
+## DraftPush 集成（可选）
+
+如果用户安装了 Obsidian 的 [DraftPush](https://obsidian.md/plugins) 插件，xhs-workflow 可以在输出到 `素材库/` 的同时，额外复制一份到待同步目录，触发 DraftPush 自动发布。
+
+### 启用方式
+
+在 `config/xhs.json` 中设置：
+
+```json
+{
+  "draftpush": {
+    "enabled": true,
+    "sync_dir": "12-小红书/待同步"
+  }
+}
+```
+
+或在配置助手中说「是」即可自动开启。
+
+### 输出结构
+
+当 `draftpush.enabled` 为 `true` 时，额外输出到：
+
+```
+{vault}/12-小红书/待同步/{日期-标题简称}/
+├── 笔记.md          # 含 YAML frontmatter
+├── 笔记-cover.html  # 封面 HTML
+└── 笔记-meta.json   # 元数据
+```
+
+**YAML frontmatter 格式：**
+
+```yaml
+---
+title: 笔记标题
+tags: [标签1, 标签2, 标签3]
+platforms: [xiaohongshu]
+cover: 笔记-cover.html
+---
+```
+
+### 使用方式
+
+1. 打开 Obsidian
+2. 进入「12-小红书/待同步/」目录
+3. DraftPush 插件自动检测到待发布内容
+4. 一键推送到小红书
+
+---
+
 ## 更新 Obsidian 素材库
 
 复盘完成后，更新 Obsidian 素材库：

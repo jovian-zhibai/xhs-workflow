@@ -15,5 +15,9 @@
     "travel": ["马蜂窝", "小红书旅行", "携程"]
   },
   "agnes_api_key": "",
-  "output_dir": "output"
+  "output_dir": "output",
+  "draftpush": {
+    "enabled": false,
+    "sync_dir": "12-小红书/待同步"
+  }
 }

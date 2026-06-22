@@ -52,6 +52,13 @@
   - 创建目录结构和模板文件
 - 用户说"否"：跳过
 
+**DraftPush 集成（Obsidian 用户可选）：**
+
+如果用户已启用 Obsidian 集成，询问是否安装了 DraftPush 插件：
+- 「你是否安装了草稿推送 DraftPush 插件？」
+- 用户说"是"：设置 `draftpush.enabled = true`，`sync_dir` 默认 `"12-小红书/待同步"`
+- 用户说"否"或不确定：`draftpush.enabled = false`，不做额外操作
+
 ### 第 5 步：同步平台配置（可选）
 
 默认使用手动复制方案（稳定可靠），无需额外配置。
@@ -126,6 +133,7 @@ API Key：
 | 命令行同步 | ⚠️ 可选 | Wechatsync CLI + Chrome 扩展 |
 | Obsidian 素材库 | ⚠️ 需配置 | obsidian_vault_path |
 | AI 生成封面 | ⚠️ 需配置 | agnes_api_key |
+| DraftPush 同步 | ⚠️ 需配置 | draftpush.enabled |
 | 代理访问 | ⚠️ 需配置 | proxy |
 ```
 
@@ -218,7 +226,11 @@ API Key：
     "travel": ["马蜂窝", "小红书旅行", "携程"]
   },
   "agnes_api_key": "",
-  "output_dir": "output"
+  "output_dir": "output",
+  "draftpush": {
+    "enabled": false,
+    "sync_dir": "12-小红书/待同步"
+  }
 }
 ```
 

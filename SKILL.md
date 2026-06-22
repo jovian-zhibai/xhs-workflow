@@ -195,6 +195,35 @@ allowed-tools:
 
 **格式：** Markdown + HTML（封面）
 
+**DraftPush 集成（可选）：**
+
+如果 `config/xhs.json` 中 `draftpush.enabled` 为 `true`，在输出到 `output/` 的同时，额外复制一份到 Obsidian 待同步目录，供 DraftPush 插件自动检测和发布：
+
+```
+{vault}/{draftpush.sync_dir}/{日期-标题简称}/
+├── xxx.md          # 笔记文案（含 YAML frontmatter）
+├── xxx-cover.html  # 封面 HTML
+└── xxx-meta.json   # 元数据
+```
+
+**写入步骤：**
+1. 正常输出到 `output/` 目录（默认行为，始终执行）
+2. 检查 `config/xhs.json` → `draftpush.enabled`
+3. 若为 `true`：
+   - 生成文件夹名：`{日期}-{标题简称}`
+   - 创建 `{vault}/{draftpush.sync_dir}/{文件夹}/`
+   - 写入 `.md`（加 YAML frontmatter）、`-cover.html`、`-meta.json`
+   - `.md` 的 YAML frontmatter 格式：
+     ```yaml
+     ---
+     title: 笔记标题
+     tags: [标签1, 标签2, 标签3]
+     platforms: [xiaohongshu]
+     cover: xxx-cover.html
+     ---
+     ```
+4. 若为 `false` 或不存在：跳过，不做任何额外操作
+
 ### 9. 同步发布
 
 使用 Wechatsync 命令行工具，将笔记自动同步到小红书草稿箱。
