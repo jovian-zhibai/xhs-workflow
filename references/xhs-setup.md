@@ -93,7 +93,7 @@
 - 默认风格：种草
 
 Obsidian 集成：
-- Vault 路径：/Users/souljian/code/opc/opc-knowledge
+- Vault 路径：/path/to/your/obsidian/vault
 - 素材库文件夹：12-小红书
 
 同步平台：
@@ -134,7 +134,7 @@ API Key：
 ```json
 {
   "author": "你的小红书昵称",
-  "obsidian_vault_path": "/Users/souljian/code/opc/opc-knowledge",
+  "obsidian_vault_path": "/path/to/your/obsidian/vault",
   "obsidian素材库_folder": "12-小红书",
   "default_style": "种草",
   "wechatsync_platforms": ["xiaohongshu", "douyin"],
@@ -190,6 +190,14 @@ npm install -g @wechatsync/cli
 然后在 Chrome 安装「文章同步助手」扩展。
 
 **注意：** Wechatsync 依赖浏览器 MCP 连接，可能不稳定。建议优先使用手动复制方案（默认）。
+
+### Q: anysearch 如何安装？
+
+```bash
+npx skills add pinkpromise/anysearch
+```
+
+anysearch 用于搜索小红书热搜、微博热搜、抖音热榜等信源，是爆款拆解和选题推荐的核心依赖。安装后无需额外配置即可使用。
 
 ### Q: 如何手动发布笔记？
 

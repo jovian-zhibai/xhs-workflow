@@ -79,10 +79,18 @@ cp config/xhs.example.json config/xhs.json
 | 功能 | 是否必须 | 配置项 |
 |------|---------|--------|
 | 写笔记、打磨 | ✅ 必须 | 无，开箱即用 |
-| 爆款拆解 | 推荐 | anysearch skill（已安装） |
+| 爆款拆解 | 推荐 | anysearch skill |
 | 同步到小红书/抖音 | 推荐 | Wechatsync CLI + Chrome 扩展 |
 | Obsidian 素材库 | 推荐 | `obsidian_vault_path` |
 | AI 生成封面图 | 可选 | `agnes_api_key` |
+
+### 安装 anysearch（推荐）
+
+anysearch 用于搜索小红书热搜、微博热搜等信源，是爆款拆解和选题的核心依赖：
+
+```bash
+npx skills add pinkpromise/anysearch
+```
 
 说"帮我配置"可以引导完成所有设置。
 

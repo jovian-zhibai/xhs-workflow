@@ -92,6 +92,8 @@ allowed-tools:
 - **深度选题**：Pinterest、Instagram、豆瓣、知乎等生活方式信源
 - **预判选题**：美妆新品、季节穿搭、节日营销、影视综艺等周期性事件
 
+> 信源连通性自动适配网络环境（`config/connectivity.json`），详见 `references/xhs-inspiration.md`
+
 **半自动：** 展示选题清单，让用户选择
 **全自动：** 自动选爆款潜力最高的选题
 
