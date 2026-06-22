@@ -1,59 +1,65 @@
 # 发布与复盘
 
-笔记打磨完成后，同步到小红书/抖音草稿箱，发布后追踪数据表现。
+笔记打磨完成后，使用 Wechatsync 自动同步到小红书草稿箱，发布后追踪数据表现。
 
 ## 同步发布
 
-通过 Wechatsync 同步到小红书和抖音图文的草稿箱。
+### 主方案：Wechatsync 自动同步（推荐）
 
-### 前置条件
+**前置条件：**
+1. 安装 Wechatsync CLI：`npm install -g @wechatsync/cli`
+2. 安装 Chrome 扩展：搜索「文章同步助手」
+3. 在 Chrome 中登录小红书
+4. 配置 token：在 `config/xhs.json` 中设置 `wechatsync_token`
 
-1. **安装 Wechatsync CLI**：
+**AI 执行步骤：**
+
+1. 从 `config/xhs.json` 读取 `wechatsync_token`
+2. 设置环境变量：
    ```bash
-   npm install -g @wechatsync/cli
+   export WECHATSYNC_TOKEN="从配置文件读取的token"
+   ```
+3. 执行同步命令：
+   ```bash
+   # 同步到小红书草稿箱
+   wechatsync sync output/xxx.md -p xiaohongshu -t "标题"
+   ```
+4. 确认同步成功，提示用户：
+   ```
+   ✅ 笔记已同步到小红书草稿箱
+
+   📱 请按以下步骤完成发布：
+   1. 打开小红书 APP
+   2. 进入「我」→「草稿箱」
+   3. 找到刚同步的笔记
+   4. 检查封面图、文案、标签是否正常
+   5. 选择合适时间点击发布
+
+   ⏰ 建议发布时间：7-9 点、12-14 点、19-21 点
    ```
 
-2. **安装 Chrome 扩展**：在 Chrome 网上应用店搜索「文章同步助手」
+**故障排查：**
 
-3. **登录目标平台**：在浏览器里正常登录小红书/抖音（使用浏览器 Cookie）
+如果同步失败，按以下顺序检查：
+1. **Token 无效**：检查 `config/xhs.json` 中的 `wechatsync_token` 是否正确
+2. **Chrome 扩展未连接**：确保 Chrome 打开且「文章同步助手」扩展已启用
+3. **未登录小红书**：在 Chrome 中打开小红书并登录
+4. **网络问题**：检查代理配置
 
-4. **启用 MCP 连接**：在扩展设置中启用并获取 Token
+**备用方案：手动复制**
 
-5. **设置环境变量**：
-   ```bash
-   export WECHATSYNC_TOKEN="你的token"
-   ```
-
-### 检查登录状态
-
+如果 Wechatsync 连接失败且无法修复，使用手动复制：
 ```bash
-wechatsync platforms --auth
+pbcopy < output/xxx.md
 ```
 
-### 同步命令
+提示用户手动粘贴到小红书 APP。
 
-```bash
-# 同步到小红书草稿箱
-wechatsync sync output/xxx.md -p xiaohongshu -t "标题"
+### 发布后流程
 
-# 同步到抖音图文草稿箱
-wechatsync sync output/xxx.md -p douyin -t "标题"
-
-# 同时同步到两个平台
-wechatsync sync output/xxx.md -p xiaohongshu,douyin -t "标题"
-```
-
-**可选参数：**
-- `-t "标题"` — 指定标题（默认从文件提取）
-- `--cover URL` — 指定封面图
-- `--dry-run` — 预览模式，不同步
-
-### 同步后流程
-
-1. AI 提示：「已同步到小红书草稿箱，请在 APP 中检查排版」
-2. 用户去小红书 APP 检查
-3. 确认排版、图片是否正常
-4. 用户手动点击发布
+1. 用户在 APP 中检查排版
+2. 确认封面图、文案、标签是否正常
+3. 选择合适时间点击发布
 
 ### 平台差异
 
@@ -229,11 +235,11 @@ wechatsync sync output/xxx.md -p xiaohongshu,douyin -t "标题"
 ## 半自动 vs 全自动
 
 **半自动：**
-- 同步前让用户确认内容包
+- 复制前让用户确认内容包
 - 发布后提醒用户记录数据
 - 数据记录后一起分析复盘
 
 **全自动：**
-- 直接同步到草稿箱
+- 直接复制文案到剪贴板
 - 自动生成复盘报告
 - 自动更新 Obsidian 素材库

@@ -61,7 +61,7 @@ allowed-tools:
 | "帮我想几个标题" / "标题太普通了" | 调用爆款标题生成器 |
 | "帮我推荐标签" | 调用标签推荐器 |
 | "帮我看看这篇笔记怎么样" / "有没有改进空间" | 调用笔记体检报告 |
-| "同步到小红书" / "发布到小红书" | 执行 Wechatsync 同步 |
+| "同步到小红书" / "发布到小红书" | 执行 wechatsync 同步到草稿箱 |
 | "帮我配置" / "怎么设置" / "配置助手" / "检查配置" | 运行配置助手（见 `references/xhs-setup.md`） |
 
 如果不确定用户意图，直接问。
@@ -195,23 +195,34 @@ allowed-tools:
 
 ### 9. 同步发布
 
-通过 Wechatsync 同步到小红书和抖音图文的草稿箱。
+使用 Wechatsync 命令行工具，将笔记自动同步到小红书草稿箱。
+
+**全自动同步流程（默认方案）：**
 
 ```bash
+# 设置环境变量（从 config/xhs.json 读取）
+export WECHATSYNC_TOKEN="你的token"
+
 # 同步到小红书草稿箱
 wechatsync sync output/xxx.md -p xiaohongshu -t "标题"
-
-# 同步到抖音图文草稿箱
-wechatsync sync output/xxx.md -p douyin -t "标题"
 ```
 
-**同步后流程：**
-1. 提示用户去 APP 检查排版
-2. 提醒黄金发布时间：7-9 点、12-14 点、19-21 点
-3. 用户手动点击发布
+**AI 执行步骤：**
+1. 从 `config/xhs.json` 读取 `wechatsync_token`
+2. 设置环境变量 `WECHATSYNC_TOKEN`
+3. 执行 `wechatsync sync` 命令同步到小红书草稿箱
+4. 确认同步成功，提示用户去小红书 APP 检查草稿箱
+5. 提醒黄金发布时间：7-9 点、12-14 点、19-21 点
 
-**半自动：** 同步前让用户确认
-**全自动：** 直接同步
+**备用方案（手动复制）：**
+
+如果 Wechatsync 连接失败，使用手动复制：
+```bash
+pbcopy < output/xxx.md
+```
+
+**半自动：** 同步前让用户确认内容
+**全自动：** 直接同步到草稿箱
 
 > 详细流程见 `references/xhs-publishing.md`
 

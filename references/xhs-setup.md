@@ -54,14 +54,18 @@
 
 ### 第 5 步：同步平台配置（可选）
 
-询问用户需要同步到哪些平台：
+默认使用手动复制方案（稳定可靠），无需额外配置。
+
+如果需要命令行同步，可配置 Wechatsync：
 - 小红书（默认开启）
 - 抖音图文（可选）
 
-**前置条件检查：**
+**Wechatsync 前置条件：**
 - Wechatsync CLI 是否安装
 - Chrome 扩展是否安装
 - 目标平台是否登录
+
+**注意：** Wechatsync 依赖浏览器 MCP 连接，可能不稳定。建议优先使用手动复制方案。
 
 ### 第 6 步：代理配置（可选）
 
@@ -117,8 +121,9 @@ API Key：
 |------|------|--------|
 | 写笔记、打磨 | ✅ 可用 | 无需配置 |
 | 爆款拆解 | ✅ 可用 | anysearch 已安装 |
-| 同步到小红书 | ⚠️ 需配置 | Wechatsync CLI + Chrome 扩展 |
-| 同步到抖音 | ⚠️ 需配置 | Wechatsync CLI + Chrome 扩展 |
+| 同步到小红书 | ✅ 可用 | 手动复制（默认） |
+| 同步到抖音 | ✅ 可用 | 手动复制（默认） |
+| 命令行同步 | ⚠️ 可选 | Wechatsync CLI + Chrome 扩展 |
 | Obsidian 素材库 | ⚠️ 需配置 | obsidian_vault_path |
 | AI 生成封面 | ⚠️ 需配置 | agnes_api_key |
 | 代理访问 | ⚠️ 需配置 | proxy |
@@ -155,7 +160,8 @@ API Key：
 | 功能 | 验证命令 | 预期结果 |
 |------|---------|---------|
 | anysearch | `anysearch search "测试"` | 返回搜索结果 |
-| Wechatsync | `wechatsync platforms --auth` | 显示登录状态 |
+| 手动复制 | `echo "测试" \| pbcopy` | 剪贴板有内容 |
+| Wechatsync（可选） | `wechatsync platforms --auth` | 显示登录状态 |
 | Obsidian | 检查 Vault 路径是否存在 | 目录存在 |
 | 代理 | `curl -x {proxy} https://google.com` | 能访问 |
 
@@ -182,6 +188,16 @@ npm install -g @wechatsync/cli
 ```
 
 然后在 Chrome 安装「文章同步助手」扩展。
+
+**注意：** Wechatsync 依赖浏览器 MCP 连接，可能不稳定。建议优先使用手动复制方案（默认）。
+
+### Q: 如何手动发布笔记？
+
+1. AI 会自动将笔记文案复制到剪贴板
+2. 打开小红书 APP，点击「+」新建笔记
+3. 粘贴文案内容
+4. 上传封面图（从 output 目录的 HTML 文件截图）
+5. 检查排版，点击发布
 
 ### Q: Obsidian 集成是什么？
 

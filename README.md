@@ -35,7 +35,7 @@
 ### 1. 安装
 
 ```bash
-npx skills add Jansen003/xhs-workflow
+npx skills add jovian-zhibai/xhs-workflow
 ```
 
 更新到最新版本：
