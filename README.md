@@ -29,6 +29,34 @@
 | 💾 素材库 | Obsidian 集成，爆款素材持久化存储 |
 
 ---
+## 前置条件
+
+### 必须
+
+无需额外安装，核心功能（写笔记、打磨、去 AI 味）开箱即用。
+
+### 推荐
+
+| 依赖 | 用途 | 安装方式 |
+|------|------|---------|
+| anysearch skill | 爆款拆解、选题搜索 | `npx skills add pinkpromise/anysearch` |
+| Wechatsync CLI | 同步到小红书草稿箱 | `npm install -g @wechatsync/cli` |
+| Obsidian | 素材库持久化存储 | [obsidian.md](https://obsidian.md) |
+
+### 可选
+
+| 依赖 | 用途 | 安装方式 |
+|------|------|---------|
+| Agnes AI API | AI 生成封面图 | 配置 `agnes_api_key` |
+| Chrome 扩展 | Wechatsync 浏览器连接 | Chrome 商店搜索「文章同步助手」 |
+
+### 检查依赖
+
+```bash
+bash scripts/xhs-check-deps.sh
+```
+
+---
 
 ## 快速开始
 
@@ -137,6 +165,7 @@ npx skills add pinkpromise/anysearch
 ```
 xhs-workflow/
 ├── SKILL.md                    # skill 入口
+├── CLAUDE.md                   # Claude Code 项目指南
 ├── config/
 │   ├── xhs.example.json        # 配置模板
 │   └── connectivity.json       # 信源连通性缓存（自动生成，不提交）
@@ -148,8 +177,14 @@ xhs-workflow/
 │   ├── xhs-publishing.md       # 发布 + 复盘
 │   ├── xhs-setup.md            # 配置助手
 │   └── chinese-copywriting-guidelines.md  # 中文排版规范
+├── scripts/                    # 自动化脚本
+│   ├── xhs-check-deps.sh       # 依赖检查
+│   └── xhs-sync.sh             # Wechatsync 同步封装
 ├── templates/                  # 5 个精美封面模板
-└── output/                     # 生成的笔记输出目录
+├── output/                     # 生成的笔记输出目录
+├── evals/                      # 测试用例
+└── .dev/                       # 开发文档
+    └── CHAIN_AUDIT.md          # 全链路审计报告
 ```
 
 ---
@@ -194,6 +229,18 @@ wechatsync sync output/xxx.md -p douyin -t "标题"
 - 封面图使用 HTML 内联样式，可直接在浏览器中截图使用
 - 标签数量建议 5-10 个，采用金字塔搭配策略
 - 黄金发布时间：7-9 点、12-14 点、19-21 点
+
+---
+
+## 测试
+
+```bash
+# 依赖检查
+bash scripts/xhs-check-deps.sh
+
+# evals 测试用例覆盖所有 9 条意图路由 + 增强工具
+# 参见 evals/evals.json（12 个测试用例）和 evals/trigger_eval.json（触发词测试）
+```
 
 ---
 
