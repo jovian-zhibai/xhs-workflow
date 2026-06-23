@@ -24,7 +24,7 @@
 | 🎨 封面 | 5 种风格模板，根据爆款拆解结果自动选择 |
 | 💎 打磨 | 去 AI 味（Humanizer + StopSlop / 内置 4 轮扫描）、笔记体检报告 |
 | 📦 输出 | 打包文案 + 标签 + 封面 + 发布指引 |
-| 🚀 同步 | Wechatsync 同步到小红书 + 抖音图文草稿箱 |
+| 🚀 同步 | DraftPush 一键推送到草稿箱（推荐）/ Wechatsync 备选 |
 | 📊 复盘 | 数据追踪、经验总结、更新爆款公式 |
 | 💾 素材库 | Obsidian 集成，爆款素材持久化存储 |
 
@@ -40,7 +40,7 @@
 | 依赖 | 用途 | 安装方式 |
 |------|------|---------|
 | anysearch skill | 爆款拆解、选题搜索 | `npx skills add pinkpromise/anysearch` |
-| Wechatsync CLI | 同步到小红书草稿箱 | `npm install -g @wechatsync/cli` |
+| DraftPush 扩展 | 一键同步到小红书草稿箱 | [GitHub](https://github.com/jovian-zhibai/draftpush) |
 | Obsidian | 素材库持久化存储 | [obsidian.md](https://obsidian.md) |
 
 ### 可选
@@ -48,6 +48,8 @@
 | 依赖 | 用途 | 安装方式 |
 |------|------|---------|
 | Agnes AI API | AI 生成封面图 | 配置 `agnes_api_key` |
+| SenseNova API | AI 生成封面图（备选） | 配置 `sensenova_api_key` |
+| Wechatsync CLI | 同步到草稿箱（备选方案） | `npm install -g @wechatsync/cli` |
 | Chrome 扩展 | Wechatsync 浏览器连接 | Chrome 商店搜索「文章同步助手」 |
 
 ### 检查依赖
@@ -108,7 +110,7 @@ cp config/xhs.example.json config/xhs.json
 |------|---------|--------|
 | 写笔记、打磨 | ✅ 必须 | 无，开箱即用 |
 | 爆款拆解 | 推荐 | anysearch skill |
-| 同步到小红书/抖音 | 推荐 | Wechatsync CLI + Chrome 扩展 |
+| 同步到小红书/抖音 | 推荐 | DraftPush 扩展 |
 | Obsidian 素材库 | 推荐 | `obsidian_vault_path` |
 | AI 生成封面图 | 可选 | `agnes_api_key` |
 
@@ -179,7 +181,8 @@ xhs-workflow/
 │   └── chinese-copywriting-guidelines.md  # 中文排版规范
 ├── scripts/                    # 自动化脚本
 │   ├── xhs-check-deps.sh       # 依赖检查
-│   └── xhs-sync.sh             # Wechatsync 同步封装
+│   ├── xhs-sync.sh             # Wechatsync 同步封装
+│   └── xhs-generate-cover.sh   # 封面图生成
 ├── templates/                  # 5 个精美封面模板
 ├── output/                     # 生成的笔记输出目录
 ├── evals/                      # 测试用例
@@ -204,7 +207,17 @@ xhs-workflow/
 
 ## 同步发布
 
-通过 Wechatsync 同步到小红书和抖音图文的草稿箱：
+### 方案一：DraftPush 一键推送（推荐）
+
+通过 DraftPush Chrome 扩展，Skill 写完后自动同步到小红书草稿箱：
+
+1. 安装 [DraftPush](https://github.com/jovian-zhibai/draftpush) Chrome 扩展
+2. 在配置中开启：`draftpush.enabled: true`
+3. Skill 写完笔记后，内容自动出现在插件面板，一键推送
+
+### 方案二：Wechatsync（备选）
+
+如果不使用 DraftPush，仍可通过 Wechatsync 同步：
 
 ```bash
 # 同步到小红书草稿箱
@@ -225,7 +238,7 @@ wechatsync sync output/xxx.md -p douyin -t "标题"
 
 ## 注意事项
 
-- 小红书没有官方发布 API，通过 Wechatsync 同步到草稿箱
+- 小红书没有官方发布 API，推荐使用 DraftPush 扩展同步到草稿箱
 - 封面图使用 HTML 内联样式，可直接在浏览器中截图使用
 - 标签数量建议 5-10 个，采用金字塔搭配策略
 - 黄金发布时间：7-9 点、12-14 点、19-21 点
