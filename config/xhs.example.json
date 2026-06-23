@@ -15,6 +15,11 @@
     "travel": ["马蜂窝", "小红书旅行", "携程"]
   },
   "agnes_api_key": "",
+  "sensenova_api_key": "",
+  "image_api_keys": [
+    { "provider": "agnes", "key_field": "agnes_api_key" },
+    { "provider": "sensenova", "key_field": "sensenova_api_key" }
+  ],
   "output_dir": "output",
   "draftpush": {
     "enabled": false,

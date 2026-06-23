@@ -202,7 +202,8 @@ allowed-tools:
 ```
 {vault}/{draftpush.sync_dir}/{日期-标题简称}/
 ├── xxx.md          # 笔记文案（含 YAML frontmatter）
-├── xxx-cover.html  # 封面 HTML
+├── xxx-cover.html  # 封面 HTML（保留）
+├── cover.png       # 封面图片（DraftPush 用此文件上传）
 └── xxx-meta.json   # 元数据
 ```
 
@@ -213,13 +214,25 @@ allowed-tools:
    - 生成文件夹名：`{日期}-{标题简称}`
    - 创建 `{vault}/{draftpush.sync_dir}/{文件夹}/`
    - 写入 `.md`（加 YAML frontmatter）、`-cover.html`、`-meta.json`
+   - 生成封面图片 `cover.png`，按以下优先级：
+     1. **Agnes API**（`agnes_api_key` 已配置）→ 调用 Agnes 文生图
+     2. **SenseNova API**（`sensenova_api_key` 已配置）→ Agnes 失败时自动切换
+     3. **Chrome 无头截图**（以上都不可用）→ 将 `-cover.html` 渲染为 PNG：
+        ```bash
+        # 自动检测 Chrome 路径
+        CHROME=$(which google-chrome 2>/dev/null || echo "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+        "$CHROME" --headless=new --screenshot=cover.png \
+          --window-size=1080,1440 --default-background-color=0 \
+          "file://{vault}/{draftpush.sync_dir}/{文件夹}/xxx-cover.html"
+        ```
+     4. **跳过**（Chrome 也不可用）→ 日志提示用户手动截图
    - `.md` 的 YAML frontmatter 格式：
      ```yaml
      ---
      title: 笔记标题
      tags: [标签1, 标签2, 标签3]
      platforms: [xiaohongshu]
-     cover: xxx-cover.html
+     cover: cover.png
      ---
      ```
 4. 若为 `false` 或不存在：跳过，不做任何额外操作

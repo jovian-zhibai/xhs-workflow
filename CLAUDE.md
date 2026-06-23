@@ -67,7 +67,9 @@ The config file contains secrets and is gitignored. Key fields:
 - `wechatsync_platforms` — multi-platform sync target list
 - `wechatsync_token` — Wechatsync API token (optional)
 - `topic_sources` — user-configured topic sources by category
-- `agnes_api_key` — Agnes AI API key for cover image generation (optional)
+- `agnes_api_key` — Agnes AI API key for cover image generation (optional, priority 1)
+- `sensenova_api_key` — SenseNova API key for cover image generation (optional, fallback)
+- `image_api_keys` — ordered list of image generation providers with fallback priority
 - `draftpush` — [DraftPush](https://github.com/jovian-zhibai/draftpush) Chrome extension integration (optional): `enabled` (bool) + `sync_dir` (path)
 - `proxy` — proxy config object with `http` and `https` fields
 

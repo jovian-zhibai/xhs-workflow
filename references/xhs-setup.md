@@ -83,10 +83,18 @@
 
 ### 第 7 步：API Key 配置（可选）
 
-**agnes_api_key（图片生成）：**
+**agnes_api_key（图片生成，优先）：**
 - 询问用户是否需要 AI 生成封面图
-- 用户说"是"：询问 API Key
+- 用户说"是"：询问 Agnes API Key
 - 用户说"否"：跳过
+
+**sensenova_api_key（图片生成，备选）：**
+- 如果用户配置了 Agnes，询问是否还需要 SenseNova 备用
+- 「Agnes 偶尔会失败，要不要配置一个 SenseNova 备用 Key？失败时自动切换」
+- 用户说"是"：询问 SenseNova API Key
+- 用户说"否"或没配置 Agnes：跳过
+
+> 封面图生成优先级：Agnes → SenseNova → Chrome 无头截图 → 跳过。详见 `references/xhs-publishing.md`。
 
 ### 第 8 步：确认配置
 
@@ -111,6 +119,7 @@ Obsidian 集成：
 
 API Key：
 - Agnes：未配置
+- SenseNova：未配置
 
 确认保存？[Y/n]
 ```
@@ -132,7 +141,7 @@ API Key：
 | 同步到抖音 | ✅ 可用 | 手动复制（默认） |
 | 命令行同步 | ⚠️ 可选 | Wechatsync CLI + Chrome 扩展 |
 | Obsidian 素材库 | ⚠️ 需配置 | obsidian_vault_path |
-| AI 生成封面 | ⚠️ 需配置 | agnes_api_key |
+| AI 生成封面 | ⚠️ 需配置 | agnes_api_key（优先）/ sensenova_api_key（备选） |
 | DraftPush 同步 | ⚠️ 需配置 | draftpush.enabled |
 | 代理访问 | ⚠️ 需配置 | proxy |
 ```
@@ -226,6 +235,11 @@ API Key：
     "travel": ["马蜂窝", "小红书旅行", "携程"]
   },
   "agnes_api_key": "",
+  "sensenova_api_key": "",
+  "image_api_keys": [
+    { "provider": "agnes", "key_field": "agnes_api_key" },
+    { "provider": "sensenova", "key_field": "sensenova_api_key" }
+  ],
   "output_dir": "output",
   "draftpush": {
     "enabled": false,

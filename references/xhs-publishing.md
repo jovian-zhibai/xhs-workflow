@@ -244,9 +244,27 @@ pbcopy < output/xxx.md
 
 ```
 {vault}/12-小红书/待同步/{日期-标题简称}/
-├── 笔记.md          # 含 YAML frontmatter
-├── 笔记-cover.html  # 封面 HTML
-└── 笔记-meta.json   # 元数据
+├── 笔记.md              # 含 YAML frontmatter
+├── 笔记-cover.html      # 封面 HTML（保留）
+├── cover.png            # 封面图片（DraftPush 用此文件上传）
+└── 笔记-meta.json       # 元数据
+```
+
+### 封面图片生成
+
+`cover.png` 按以下优先级自动生成：
+
+| 优先级 | 方式 | 条件 | 命令/接口 |
+|--------|------|------|-----------|
+| 1 | Agnes 文生图 | `agnes_api_key` 已配置 | 调用 Agnes API |
+| 2 | SenseNova 文生图 | `sensenova_api_key` 已配置 | 调用 SenseNova API（Agnes 失败时切换） |
+| 3 | Chrome 无头截图 | Chrome 已安装 | `chrome --headless=new --screenshot=cover.png --window-size=1080,1440 file://.../cover.html` |
+| 4 | 跳过 | 以上都不可用 | 日志提示用户手动截图 |
+
+Chrome 路径自动检测：
+```bash
+CHROME=$(which google-chrome 2>/dev/null || echo "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+test -x "$CHROME" && echo "✅ Chrome 可用" || echo "⚠️ Chrome 不可用，跳过截图"
 ```
 
 **YAML frontmatter 格式：**
@@ -256,7 +274,7 @@ pbcopy < output/xxx.md
 title: 笔记标题
 tags: [标签1, 标签2, 标签3]
 platforms: [xiaohongshu]
-cover: 笔记-cover.html
+cover: cover.png
 ---
 ```
 
